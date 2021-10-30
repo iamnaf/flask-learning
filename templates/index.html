@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+
+{% block page_content %}
+<div class="page-header">
+    {% if name %}
+    <h1>Welcome to Flask, {{ name }}</h1>
+    {% else %}
+    <h1>Welcome to Flask, Stranger</h1>
+    {% endif %}
+    {% if not known %}
+    <h1>Pleased to meet you</h1>
+    {% else %}
+    <h1>Happy to see you again</h1>
+    {% endif %}
+    <p> The local date and time is {{ moment(current_time).format('LLLL') }}.</p>
+    <p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
+</div>
+{{ wtf.quick_form(form) }}
+{% endblock %}
